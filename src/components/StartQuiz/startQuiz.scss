@@ -1,0 +1,30 @@
+ @import "../../assets/styles/index.scss";
+
+ .container {
+    background: linear-gradient(180deg, rgba(175, 156, 243, 0) 7.92%, #AF9CF3 86.48%);
+    .logo {
+        margin-top: 10px;
+        width: 150px;
+        height: 40px;
+     }
+     .heading {
+        @include flexBox(row, center, center);
+        flex: 1;
+        .quiz {
+            @include flexBox(row, center, center);
+            border: 1px solid $white;
+            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+            font-size: 30px;
+            background-color: $white;
+            color: $red;
+            font-weight: 900;
+            box-shadow: -1.5px 3.5px 10.5px 2.5px rgba(222, 222, 222, 0.43);
+         }
+     }
+     .start-button {
+        width: 90%;
+     }
+ }
+ 

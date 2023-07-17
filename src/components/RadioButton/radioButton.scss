@@ -1,0 +1,38 @@
+@import "../../assets/styles/index.scss";
+
+.radio-button-container {
+  @include flexBox(row, "", center);
+  background-color: $grey;
+  border-radius: 6px;
+  height: 60px;
+  margin: 10px 0;
+  padding: 15px;
+  input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"] + label:before {
+    content: "";
+    cursor: pointer;
+    padding-right: 10px;
+    background: url("../../assets/icons/uncheckedRadioButton.svg") no-repeat;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+  }
+  input[type="radio"]:checked + label:before {
+    content: "";
+    width: 30px;
+    padding-right: 10px;
+    cursor: pointer;
+    height: 30px;
+    display: inline-block;
+    background: url("../../assets/icons/checkedRadioButton.svg") no-repeat;
+  }
+
+  label {
+    @include flexBox(row, "", center);
+    height: inherit;
+    cursor: pointer;
+    user-select: none;
+  }
+}

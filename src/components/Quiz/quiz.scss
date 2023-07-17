@@ -1,0 +1,51 @@
+@import "../../assets/styles/index.scss";
+
+.quiz-container {
+  background-color: $purple;
+  img {
+    width: 100%;
+  }
+  .question-container {
+    width: 100%;
+    background: $white;
+    position: relative;
+    border-radius: 20px 20px 0 0;
+    .progress-bar-container {
+      position: absolute;
+      top: -40px;
+      @include flexBox(row, center, center);
+      border-radius: 50%;
+      border: 1px solid $white;
+      background-color: $white;
+      width: 140px;
+      height: 140px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      .CircularProgressbar {
+        width: 120px;
+        height: 120px;
+        .CircularProgressbar-path {
+          stroke: $green;
+        }
+      }
+    }
+    .question {
+        margin: 0 20px;
+        .question-text {
+            margin: 100px 0 30px 0;
+            font-size: 30px;
+            font-weight: 900;
+          }
+    }
+    .step {
+      color: $black;
+      font-size: 40px;
+      font-weight: 900;
+    }
+    .max-step {
+      color: $dark-grey;
+      font-size: 30px;
+      font-weight: 900;
+    }
+  }
+}
