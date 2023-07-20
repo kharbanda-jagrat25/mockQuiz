@@ -10,11 +10,23 @@ const Question = () => {
   const navigate = useNavigate();
   const [currentSelectedOption, setCurrentSelectedOption] = useState('');
   const [isSubmittingAnswer, setIsSubmittingAnswer] = useState(false);
+  const [doResetDataOrShowResult, setDoResetDataOrShowResult] = useState(false);
   const { currentQuestionNo, setCurrentQuestionNo, questions, setQuestions, setResult } = useContext(MyContext);
 
   useEffect(() => {
     fetchQuestions();
   }, []);
+
+  useEffect(() => {
+    if (doResetDataOrShowResult) {
+      if (currentQuestionNo + 1 <= questions.length) setCurrentQuestionNo(currentQuestionNo + 1);
+      else {
+        calcResult();
+        navigate("/quiz/result");
+      }
+      setDoResetDataOrShowResult(false);
+    }
+  }, [doResetDataOrShowResult]);
 
   const fetchQuestions = () => {
     setTimeout(() => {
@@ -35,12 +47,8 @@ const Question = () => {
       });
       if (currentSelectedOption) setCurrentSelectedOption('');
       setIsSubmittingAnswer(false);
-    },300);
-    if (currentQuestionNo + 1 <= questions.length) setCurrentQuestionNo(currentQuestionNo + 1);
-    else {
-      calcResult();
-      navigate("/quiz/result");
-    }
+      setDoResetDataOrShowResult(true);
+    }, 300);
   }
 
   const calcResult = () => {
