@@ -24,11 +24,41 @@
       .percent {
         position: absolute;
         top: 110px;
-        left: 45%;
+        left: 52%;
         transform: translateX(-45%);
         color: $black;
         font-size: 30px;
         font-weight: 800;
+      }
+      .speedometer {
+        position: absolute;
+        left: 29.5%;
+        top: 14%;
+        .needle {
+          border-right: 10px solid transparent;
+          border-left: 10px solid transparent;
+          border-bottom: 25px solid black;
+          position: absolute;
+          left: 43.5%;
+          top: -25px;
+        }
+
+        .outer-circle {
+          position: relative;
+          @include flexBox(row, center, center);
+          background-color: white;
+          border: 1px solid #EBEDF5;
+          border-radius: 50%;
+          width: 160px;
+          height: 160px;
+        }
+        .inner-circle {
+          background-color: white;
+          border-radius: 50%;
+          border: 1px solid #EBEDF5;
+          width: 140px;
+          height: 140px;
+        }
       }
     }
     .ans-container {

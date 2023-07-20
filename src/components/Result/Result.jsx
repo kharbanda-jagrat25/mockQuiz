@@ -14,10 +14,15 @@ export default function Result() {
 
   const getPercentage = () => {
     if (result) {
-      return (result.noOfCorrectAnswers/result.totalNoOfQuestions)*100;
+      return (result.noOfCorrectAnswers / result.totalNoOfQuestions) * 100;
     }
     return 0;
-  }
+  };
+
+  const getNeedleDegrees = () => {
+    const inDegrees = (180 * getPercentage()) / 100;
+    return (-90 + inDegrees);
+  };
 
   return (
     <div className="result-main-container page-content container">
@@ -26,18 +31,27 @@ export default function Result() {
         <h4>Your result</h4>
         <div className="circular-progress-bar-container">
           <CircularProgressBar />
+          <div className="speedometer" style={{ transform: `rotate(${getNeedleDegrees()}deg)` }}>
+           <div className="outer-circle">
+              <div className="inner-circle"></div>
+              <div className="needle"></div>
+           </div>
+          </div>
           <div className="percent">{getPercentage()}%</div>
         </div>
         <div className="ans-container">
           <div className="right-ans-container">
-              <div className="indicator"></div>{result ? result.noOfCorrectAnswers : 0}
-              <span className="text">Correct</span>
-            </div>
+            <div className="indicator"></div>
+            {result ? result.noOfCorrectAnswers : 0}
+            <span className="text">Correct</span>
+          </div>
 
           <div className="wrong-ans-container">
-              <div className="indicator"></div>{(result ? result.totalNoOfQuestions : 0) - (result ? result.noOfCorrectAnswers : 0)}
-              <span className="text">Incorrect</span>
-            </div>
+            <div className="indicator"></div>
+            {(result ? result.totalNoOfQuestions : 0) -
+              (result ? result.noOfCorrectAnswers : 0)}
+            <span className="text">Incorrect</span>
+          </div>
         </div>
         <Button
           type="submit"
